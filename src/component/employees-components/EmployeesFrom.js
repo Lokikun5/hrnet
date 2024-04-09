@@ -1,6 +1,7 @@
 import FromBalise from "../asset/FromBalise";
 import "../../style/employees-from.scss";
 import FromBaliseSelect from "../asset/FromBaliseSelect";
+import {DatePicker} from "antd";
 function EmployeesFrom () {
     return(
         <section className="from-section">
@@ -10,8 +11,8 @@ function EmployeesFrom () {
                     <div className="base-flex-col gap">
                         <FromBalise labelname={"First Name"} inputType={"text"}/>
                         <FromBalise labelname={"Last Name"} inputType={"text"}/>
-                        <FromBalise labelname={"Date of Birth"} inputType={"text"}/>
-                        <FromBalise labelname={"Start Date"} inputType={"text"}/>
+                        <DatePicker placeholderInput={"Date of Birth"}/>
+                        <DatePicker placeholderInput={"Start Date"}/>
                     </div>
                     <fieldset>
                         <legend>Address</legend>
