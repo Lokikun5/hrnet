@@ -1,0 +1,24 @@
+$baseColor: #444444;
+
+h1{
+  font-size: 3em;
+}
+
+.base-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.base-flex-col{
+  @extend .base-flex;
+  flex-direction:column;
+}
+
+.gap{
+  gap: 20px;
+}
+.gap2{
+  gap: 50px;
+}
+

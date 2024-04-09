@@ -1,0 +1,14 @@
+@import "../App";
+.link {
+  color: $baseColor;
+  text-decoration: none;
+  border: solid 1px $baseColor;
+  padding: 5px;
+
+
+
+  &:hover, &:focus {
+    color: white;
+    background-color: $baseColor;
+  }
+}
