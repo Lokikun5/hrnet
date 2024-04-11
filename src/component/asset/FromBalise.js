@@ -1,8 +1,8 @@
-function FromBalise ({labelname,inputType }) {
+function FromBalise ({labelname,inputType, value, onChange }) {
     return (
         <div>
             <label>{labelname}</label>
-            <input type={inputType}/>
+            <input type={inputType} value={value} onChange={onChange}/>
         </div>
     );
 }

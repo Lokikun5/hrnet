@@ -14,6 +14,10 @@ h1{
   @extend .base-flex;
   flex-direction:column;
 }
+.base-flex-between{
+  @extend .base-flex;
+  justify-content: space-between!important;
+}
 
 .gap{
   gap: 20px;
@@ -22,3 +26,6 @@ h1{
   gap: 50px;
 }
 
+.mt-1{
+  margin-top: 10px;
+}

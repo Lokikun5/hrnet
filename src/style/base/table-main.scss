@@ -1,0 +1,49 @@
+$color-ascending: blue;
+$color-descending: red;
+$color-neutral: gray;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  th{
+    cursor: pointer;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+  }
+
+  th.sortable span {
+    display: inline-block;
+    margin-left: 5px;
+
+  }
+
+  .arrow {
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+
+    &.ascending {
+      color: $color-ascending;
+    }
+
+    &.descending {
+      color: $color-descending;
+    }
+
+    &.neutral {
+      color: $color-neutral;
+    }
+  }
+
+
+}
+
+.mx {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
