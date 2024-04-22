@@ -1,7 +1,7 @@
 import Header from "../component/Header";
 import React from 'react';
 import LinkBtn from "../component/asset/LinkBtn";
-import EmployeeListTable from "../component/employees-components/EmployeeListTable";
+import EmployeeListTable from "../component/datas-components/EmployeeListTable";
 function EmployeeList () {
 
     return(

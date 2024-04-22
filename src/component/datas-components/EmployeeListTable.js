@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import TableHeader from "../employees-components/TableHeader"
+import TableHeader from ".//TableHeader"
 import TableMain from "./TableMain";
 import TableFooter from "./TableFooter";
 import { paginate } from "../../method/pagination";

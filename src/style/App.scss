@@ -18,6 +18,10 @@ h1{
   @extend .base-flex;
   justify-content: space-between!important;
 }
+.base-flex-end{
+  @extend  .base-flex;
+  justify-content: end;
+}
 
 .gap{
   gap: 20px;
@@ -28,4 +32,10 @@ h1{
 
 .mt-1{
   margin-top: 10px;
+}
+.w-full{
+  width: 100%;
+}
+.cursor-pointer{
+  cursor: pointer;
 }

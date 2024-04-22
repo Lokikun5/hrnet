@@ -4,13 +4,16 @@ import { addEmployee } from '../../redux/employees/actions';
 import { DatePicker } from "antd";
 import FromBalise from "../asset/FromBalise";
 import FromBaliseSelect from "../asset/FromBaliseSelect";
-import Modal from "../asset/Modal";
+import Modal from 'react-modal';
 import employee_role from "../../datas/employee-role";
 import states from "../../datas/states";
-import "../../style/employees-from.scss";
+import "../../style/datas-from.scss";
+import Legend from "../asset/Legend";
+import ValidationMessage from "../asset/ValidationMessage";
+import SectionTitle from "../asset/SectionTitle";
 
 // Format dates for role list and department list
-function EmployeesFrom() {
+function DatasFrom() {
 
     const dispatch = useDispatch();
 
@@ -27,6 +30,7 @@ function EmployeesFrom() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     const saveEmployee = () => {
 
@@ -57,6 +61,17 @@ function EmployeesFrom() {
         dispatch(addEmployee(newEmployee));
     };
 
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+        },
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
     };
@@ -74,7 +89,7 @@ function EmployeesFrom() {
 
     return (
         <section className="from-section">
-            <h2>Create Employee</h2>
+            <SectionTitle title={"Create Employee"} />
             {errorMessage && <div className="base-flex error-message">{errorMessage}</div>}
             <form>
                 <div className="base-flex gap2">
@@ -91,7 +106,7 @@ function EmployeesFrom() {
                                     format={"YYYY-MM-DD"}/>
                     </div>
                     <fieldset>
-                        <legend>Address</legend>
+                        <Legend legendTitle={"address"}/>
                         <FromBalise labelname={"Street"} inputType={"text"}
                                     value={street} onChange={(e) => setStreet(e.target.value)}/>
                         <FromBalise labelname={"City"} inputType={"text"}
@@ -114,12 +129,15 @@ function EmployeesFrom() {
             <div className="base-flex mt-1">
                 <button onClick={saveEmployee} className="link">Save</button>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <p>The employee "{firstName} {lastName}" has been validated !</p>
+            <Modal isOpen={isModalOpen} style={customStyles}>
+                <div className="w-full base-flex-end">
+                    <button className="cursor-pointer" onClick={closeModal}>×</button>
+                </div>
+                <ValidationMessage message={`The employee ${firstName} ${lastName} has been validated !`}/>
             </Modal>
         </section>
 
     );
 }
 
-export default EmployeesFrom;
+export default DatasFrom;
