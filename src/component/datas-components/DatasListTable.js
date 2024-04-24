@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import TableHeader from "./TableHeader";
 import TableMain from "./TableMain";
 import TableFooter from "./TableFooter";
@@ -7,9 +6,7 @@ import { paginate } from "../../method/pagination";
 import { reorderSort } from "../../method/reorder";
 import { searchItems } from "../../method/search";
 
-function DatasListTable() {
-    const items = useSelector(state => state.items.list);
-    console.log(items);
+function DatasListTable({ items }) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [entries, setEntries] = useState(10);
