@@ -1,5 +1,6 @@
 import "../../style/base/table-main.scss";
-function TableMain({ employees, handleSort, sortConfig }) {
+import settings from "../../data_setting/settings";
+function TableMain({ items, handleSort, sortConfig }) {
     const renderSortArrow = (key) => {
         //change the position of the arrow depending on the sort method
         const isActive = sortConfig.key.endsWith(key);
@@ -15,8 +16,8 @@ function TableMain({ employees, handleSort, sortConfig }) {
 
         return <span className={arrowClass}>{arrowContent}</span>;
     };
-    console.log(employees);
-    if (employees.length === 0) {
+    console.log(items);
+    if (items.length === 0) {
         return <div className="base-flex mx">No data available in table</div>;
     }
 
@@ -24,56 +25,56 @@ function TableMain({ employees, handleSort, sortConfig }) {
         <table>
             <thead>
             <tr>
-                <th className="sortable" onClick={() => handleSort('firstName')}>
-                    First Name
-                    {renderSortArrow('firstName')}
+                <th className="sortable" onClick={() => handleSort('firstData')}>
+                    {settings.DatasList.th_title1}
+                    {renderSortArrow('firstData')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('lastName')}>
-                    Last Name
-                    {renderSortArrow('lastName')}
+                <th className="sortable" onClick={() => handleSort('secondData')}>
+                    {settings.DatasList.th_title2}
+                    {renderSortArrow('secondData')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('startDate')}>
-                    Start Date
-                    {renderSortArrow('startDate')}
+                <th className="sortable" onClick={() => handleSort('selectDate')}>
+                    {settings.DatasList.th_title3}
+                    {renderSortArrow('selectDate')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('department')}>
-                    Department
-                    {renderSortArrow('department')}
+                <th className="sortable" onClick={() => handleSort('seventhData')}>
+                    {settings.DatasList.th_title4}
+                    {renderSortArrow('seventhData')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('dateOfBirth')}>
-                    Date of Birth
-                    {renderSortArrow('dateOfBirth')}
+                <th className="sortable" onClick={() => handleSort('selectDate2')}>
+                    {settings.DatasList.th_title5}
+                    {renderSortArrow('selectDate2')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('street')}>
-                    Street
-                    {renderSortArrow('street')}
+                <th className="sortable" onClick={() => handleSort('thirdData')}>
+                    {settings.DatasList.th_title6}
+                    {renderSortArrow('thirdData')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('city')}>
-                    City
+                <th className="sortable" onClick={() => handleSort('fourthData')}>
+                    {settings.DatasList.th_title7}
                     {renderSortArrow('city')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('state')}>
-                    State
-                    {renderSortArrow('state')}
+                <th className="sortable" onClick={() => handleSort('fifthData')}>
+                    {settings.DatasList.th_title8}
+                    {renderSortArrow('fifthData')}
                 </th>
-                <th className="sortable" onClick={() => handleSort('zipCode')}>
-                    Zip Code
-                    {renderSortArrow('zipCode')}
+                <th className="sortable" onClick={() => handleSort('sixthData')}>
+                    {settings.DatasList.th_title9}
+                    {renderSortArrow('sixthData')}
                 </th>
             </tr>
             </thead>
             <tbody>
-            {employees.map((employee, index) => (
+            {items.map((item, index) => (
                 <tr key={index}>
-                    <td>{employee.firstName}</td>
-                    <td>{employee.lastName}</td>
-                    <td>{employee.startDate}</td>
-                    <td>{employee.department}</td>
-                    <td>{employee.dateOfBirth}</td>
-                    <td>{employee.address.street}</td>
-                    <td>{employee.address.city}</td>
-                    <td>{employee.address.stateAbbreviation}</td>
-                    <td>{employee.address.zipCode}</td>
+                    <td>{item.firstData}</td>
+                    <td>{item.secondData}</td>
+                    <td>{item.selectDate}</td>
+                    <td>{item.seventhData}</td>
+                    <td>{item.selectDate2}</td>
+                    <td>{item.fieldsetValue.thirdData}</td>
+                    <td>{item.fieldsetValue.fourthData}</td>
+                    <td>{item.fieldsetValue.fifthData}</td>
+                    <td>{item.fieldsetValue.sixthData}</td>
                 </tr>
             ))}
             </tbody>

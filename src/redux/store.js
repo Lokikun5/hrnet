@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import employeesReducer from './employees/reducer';
+import dataReducer from './redux_method/reducer';
 
 const store = configureStore({
     reducer: {
-        employees: employeesReducer,
+        items: dataReducer,
     },
 });
 

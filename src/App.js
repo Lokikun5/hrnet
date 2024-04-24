@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import HomePage from "./pages/HomePage";
-import EmployeeList from "./pages/EmployeeList";
+import DatasList from "./pages/DatasList";
 
 const router = createBrowserRouter([
   {
@@ -11,8 +11,8 @@ const router = createBrowserRouter([
     element:<HomePage/>
   },
   {
-    path:'/employee-list',
-    element:<EmployeeList/>
+    path:'/data-list',
+    element:<DatasList/>
   }
 ]);
 
