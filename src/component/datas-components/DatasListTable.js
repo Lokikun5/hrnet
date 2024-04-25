@@ -6,12 +6,14 @@ import { paginate } from "../../method/pagination";
 import { reorderSort } from "../../method/reorder";
 import { searchItems } from "../../method/search";
 
-function DatasListTable({ items }) {
+function DatasListTable({items,columnConfigs, initialSortKey = 'defaultKey',
+                            initialSortDirection = 'ascending',
+                            initialPageSize = 10 }) {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [entries, setEntries] = useState(10);
+    const [entries, setEntries] = useState(initialPageSize);
     const [paginatedItems, setPaginatedItems] = useState([]);
-    const [sortConfig, setSortConfig] = useState({ key: 'selectDate', direction: 'ascending' });
+    const [sortConfig, setSortConfig] = useState({ key: initialSortKey, direction: initialSortDirection });
     const [search, setSearch] = useState("");
 
     useEffect(() => {
@@ -30,22 +32,12 @@ function DatasListTable({ items }) {
     };
 
     const handleSort = (key) => {
-        const fieldKeys = {
-            'firstData': 'firstData',
-            'secondData': 'secondData',
-            'selectDate': 'selectDate',
-            'selectDate2': 'selectDate2',
-            'thirdData': 'fieldsetValue.thirdData',
-            'fourthData': 'fieldsetValue.fourthData',
-            'fifthData': 'fieldsetValue.fifthData',
-            'sixthData': 'fieldsetValue.sixthData',
-            'seventhData': 'seventhData'
-        };
-
-        let sortKey = fieldKeys[key] || key;
-
-        const direction = sortConfig.key === sortKey && sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
-        setSortConfig({ key: sortKey, direction });
+        if (!key) {
+            console.error("Undefined sort key received:", key);
+            return;
+        }
+        const direction = sortConfig.key === key && sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
+        setSortConfig({ key, direction });
     };
 
     const handleSearch = (e) => {
@@ -57,6 +49,7 @@ function DatasListTable({ items }) {
             <TableHeader onEntriesChange={handleEntriesChange}
                          onSearchChange={handleSearch} />
             <TableMain items={paginatedItems}
+                       columnConfigs={columnConfigs}
                        handleSort={handleSort}
                        sortConfig={sortConfig} />
             <TableFooter currentPage={currentPage}
@@ -66,4 +59,5 @@ function DatasListTable({ items }) {
         </section>
     );
 }
+
 export default DatasListTable;

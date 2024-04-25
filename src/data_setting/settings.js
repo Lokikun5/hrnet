@@ -46,6 +46,7 @@ const settings = {
         th_title8: "State",
         th_title9: "Zip Code",
     }
+
 };
 
 export default settings;

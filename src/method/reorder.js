@@ -1,12 +1,15 @@
 function reorderSort(array, sortKey, direction) {
-    console.log(sortKey);
+    if (!sortKey) {
+        console.error("Sort key is undefined.");
+        return array;
+    }
+
     return [...array].sort((a, b) => {
         let aValue = a, bValue = b;
 
-        // Access deeply nested values
         for (const key of sortKey.split('.')) {
-            aValue = aValue[key];
-            bValue = bValue[key];
+            aValue = aValue && aValue[key];
+            bValue = bValue && bValue[key];
         }
 
         if (aValue < bValue) {
