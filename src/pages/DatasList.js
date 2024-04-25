@@ -1,7 +1,8 @@
 import Header from "../component/Header";
 import React from 'react';
 import LinkBtn from "../component/asset/LinkBtn";
-import DatasListTable from "../component/datas-components/DatasListTable";
+//import DatasListTable from "../component/datas-components/DatasListTable";
+import DatasListTable from 'react-datas-list-table-hrnet';
 import { useSelector } from 'react-redux';
 import settings from "../data_setting/settings";
 function DatasList () {
