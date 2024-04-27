@@ -1,5 +1,10 @@
+import PropTypes from 'prop-types';
 function Legend ({legendTitle}) {
     return(
         <legend>{legendTitle}</legend>
     )
-} export default Legend;
+}
+Legend.propTypes = {
+    legendTitle: PropTypes.string.isRequired
+};
+export default Legend;

@@ -38,9 +38,9 @@ const settings = {
 
         th_title1: "First Name",
         th_title2: "Last Name",
-        th_title3: "Start Date",
+        th_title3: "Date of Birth",
         th_title4: "Department",
-        th_title5: "Date of Birth",
+        th_title5: "Start Date",
         th_title6: "Street",
         th_title7: "City",
         th_title8: "State",

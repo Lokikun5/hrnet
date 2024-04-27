@@ -13,15 +13,15 @@ import SectionTitle from "../asset/SectionTitle";
 
 function DatasFrom() {
     const dispatch = useDispatch();
-    const [firstData, setFirstData] = useState('');
-    const [secondData, setSecondData] = useState('');
-    const [selectDate, setSelectDate] = useState(null);
-    const [selectDate2, setSelectDate2] = useState(null);
-    const [thirdData, setThirdData] = useState('');
-    const [fourthData, setFourthData] = useState('');
-    const [fifthData, setFifthData] = useState('');
-    const [sixthData, setSixthData] = useState('');
-    const [seventhData, setSeventhData] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [birthDayDate, setBirthDayDate] = useState(null);
+    const [startDayDate, setStartDayDate] = useState(null);
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState('');
+    const [department, setDepartment] = useState('');
 
     const [errorMessage, setErrorMessage] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,26 +29,26 @@ function DatasFrom() {
     const saveNewEntries = () => {
         setErrorMessage('');
 
-        if (!firstData || !secondData || !selectDate ||
-            !selectDate2 || !thirdData || !fourthData || !fifthData || !sixthData || !seventhData) {
+        if (!firstName || !lastName || !birthDayDate ||
+            !startDayDate || !street || !city || !state || !zipCode || !department) {
             setErrorMessage("Please complete all fields");
             return;
         }
         setIsModalOpen(true);
 
         const newEntries = {
-            firstData,
-            secondData,
-            selectDate: selectDate ? selectDate.format('YYYY-MM-DD') : '',
-            selectDate2: selectDate2 ? selectDate2.format('YYYY-MM-DD') : '',
+            firstName,
+            lastName,
+            birthDayDate: birthDayDate ? birthDayDate.format('YYYY-MM-DD') : '',
+            startDayDate: startDayDate ? startDayDate.format('YYYY-MM-DD') : '',
             fieldsetValue: {
-                thirdData,
-                fourthData,
-                fifth: settings.HomePage.getSelectDataByAbbreviation(fifthData),
-                fifthData,
-                sixthData
+                street,
+                city,
+                states: settings.HomePage.getSelectDataByAbbreviation(state),
+                state,
+                zipCode
             },
-            seventhData,
+            department,
         };
         console.log(newEntries)
         dispatch(addNewItem(newEntries));
@@ -70,11 +70,11 @@ function DatasFrom() {
     };
 
     const handleStateChange = selectedOption => {
-        setFifthData(selectedOption ? selectedOption.value : '');
+        setState(selectedOption ? selectedOption.value : '');
     };
 
     const handleDepartmentChange = selectedOption => {
-        setSeventhData(selectedOption ? selectedOption.value : '');
+        setDepartment(selectedOption ? selectedOption.value : '');
     };
 
     return (
@@ -86,45 +86,45 @@ function DatasFrom() {
                     <div className="base-flex-col gap">
                         <FromBalise labelname={settings.HomePage.label_name1}
                                     inputType={settings.HomePage.from_tag_type_text}
-                                    value={firstData}
-                                    onChange={(e) => setFirstData(e.target.value)}/>
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}/>
                         <FromBalise labelname={settings.HomePage.label_name2}
                                     inputType={settings.HomePage.from_tag_type_text}
-                                    value={secondData}
-                                    onChange={(e) => setSecondData(e.target.value)}/>
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}/>
                         <DatePicker placeholder={settings.HomePage.date_picker_placeholder1}
-                                    value={selectDate}
-                                    onChange={(date) => setSelectDate(date)}
+                                    value={birthDayDate}
+                                    onChange={(date) => setBirthDayDate(date)}
                                     format={settings.HomePage.date_picker_format}/>
                         <DatePicker placeholder={settings.HomePage.date_picker_placeholder2}
-                                    value={selectDate2}
-                                    onChange={(date) => setSelectDate2(date)}
+                                    value={startDayDate}
+                                    onChange={(date) => setStartDayDate(date)}
                                     format={settings.HomePage.date_picker_format}/>
                     </div>
                     <fieldset>
                         <Legend legendTitle={settings.HomePage.fieldset_title}/>
                         <FromBalise labelname={settings.HomePage.label_name3}
                                     inputType={settings.HomePage.from_tag_type_text}
-                                    value={thirdData} onChange={(e) => setThirdData(e.target.value)}/>
+                                    value={street} onChange={(e) => setStreet(e.target.value)}/>
                         <FromBalise labelname={settings.HomePage.label_name4}
                                     inputType={settings.HomePage.from_tag_type_text}
-                                    value={fourthData} onChange={(e) => setFourthData(e.target.value)}/>
+                                    value={city} onChange={(e) => setCity(e.target.value)}/>
 
                         <Select
                             options={settings.HomePage.getSelectData2()}
-                            value={fifthData ? { value: fifthData, label: settings.HomePage.getSelectData2().find(s => s.value === fifthData)?.label } : null}
+                            value={state ? { value: state, label: settings.HomePage.getSelectData2().find(s => s.value === state)?.label } : null}
                             onChange={handleStateChange}
                             placeholder={settings.HomePage.select_placeholder1}
                             className="mt-1"
                         />
 
                         <FromBalise labelname={settings.HomePage.label_name5} inputType={settings.HomePage.from_tag_type_number}
-                                    value={sixthData} onChange={(e) => setSixthData(e.target.value)}/>
+                                    value={zipCode} onChange={(e) => setZipCode(e.target.value)}/>
                     </fieldset>
                 </div>
                 <Select
                     options={settings.HomePage.getSelectData1()}
-                    value={seventhData ? { value: seventhData, label: settings.HomePage.getSelectData1().find(role => role.value === seventhData)?.label } : null}
+                    value={department ? { value: department, label: settings.HomePage.getSelectData1().find(role => role.value === department)?.label } : null}
                     onChange={handleDepartmentChange}
                     placeholder={settings.HomePage.select_placeholder2}
                     className="mt-1"

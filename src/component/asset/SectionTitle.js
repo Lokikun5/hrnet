@@ -1,5 +1,10 @@
+import PropTypes from 'prop-types';
 function SectionTitle ({title}){
    return (
        <h2>{title}</h2>
    );
-}export default SectionTitle;
+}
+SectionTitle.propTypes = {
+   title: PropTypes.string.isRequired
+};
+export default SectionTitle;

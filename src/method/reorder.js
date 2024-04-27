@@ -12,6 +12,13 @@ function reorderSort(array, sortKey, direction) {
             bValue = bValue && bValue[key];
         }
 
+        // Check if values are numbers and parse them if they are
+        const isNumeric = !isNaN(parseFloat(aValue)) && isFinite(aValue) && !isNaN(parseFloat(bValue)) && isFinite(bValue);
+        if (isNumeric) {
+            aValue = parseFloat(aValue);
+            bValue = parseFloat(bValue);
+        }
+
         if (aValue < bValue) {
             return direction === 'ascending' ? -1 : 1;
         } else if (aValue > bValue) {
